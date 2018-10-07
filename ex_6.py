@@ -3,9 +3,6 @@
 # f-strings
 # f"some stuff here {variable}"
 
- #   types_of_people = 10
- #   x = f"There are {types_of_people} types of people."
-
 types_of_people = 10 
 x = f"there are {types_of_people} types of people"
 
