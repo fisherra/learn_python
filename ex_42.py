@@ -2,33 +2,34 @@
 
 # x is a y, has a z 
 
-# assign class to animal, animal is a object
-class Animal(object):
+# create class animal is an object and has attributes 'pass'
+class animal(object):
     pass
 
-# assign class to dog, dog is an animal, has a name
-class Dog(Animal):
-# define __init__ self, name
+# create class dog is an animal which is an object
+# has initiated attributes 'self', and 'name'
+class dog(animal):
     def __init__(self, name):
         self.name = name
 
-# assign class to cat, cat is an animal, has a name
-class Cat(Animal):
+# create class cat is an animal which is an object
+# has initiated attributes 'self', and 'name' = name var
+class cat(animal):
     def __init__(self, name):
         self.name = name
 
-# assign class to person, person is an object, has a name and a pet
-class Person(object):
+class person(object):
     def __init__(self, name):
-        self.name = name 
-        # person has a pet of some sort 
+        self.name = name
+        # also create empty slot for a pet 
         self.pet = None
+    
 
-# assign a clas to Employee, employee is a person, has a name and salary
-class Emplyee(Person):
+class employee(person):
     def __init__(self,name,salary):
         self.name = name
         self.salary = salary
+
 
 
 # using fish
@@ -43,13 +44,17 @@ class Halibut(Fish):
 
 
 # rover is a dog
-rover = Dog("rover")
+rover = dog("Ronald")
+print(rover.name)
+
 
 # satan is a ccat
-satan = Cat("satan")
+satan = cat("Santa")
+print(satan.name)
 
 # mary is a person
-Mary = Person("Mary")
+Mary = person("Mary-the-person")
+print(Mary.name)
 
 # marry is a person, therefor has self.pet attribute
 # we set self.pet attribute to be satan, which is we 
@@ -58,7 +63,7 @@ Mary = Person("Mary")
 Mary.pet = satan
 
 
-frank = Emplyee("Frank", 120000)
+frank = employee("Frank", 120000)
 
 frank.pet = rover
 
