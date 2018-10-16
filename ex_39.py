@@ -54,3 +54,25 @@ print('-' * 10)
 print("Thailand has", cities[countries['Thailand']])
 # because countries['Thailand'] = 'TH', and cities['TH'] = 'Bangkok
 
+
+# print out every abreviation
+print('-' * 10)
+for country, abbrev in list(countries.items()):
+    print(f"{country} is abbreviated {abbrev}")
+
+# print out each city
+print('-' * 10)
+for country, city in list(cities.items()):
+    print(f"{country} has the famous city {city}")
+
+
+
+# safely get an abbreviation for a country that might not be there
+print('-' * 10)
+
+country = countries.get('Mexico')
+ 
+if not country:
+    print("sorry, no Mexico")
+
+
