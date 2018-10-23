@@ -1,66 +1,96 @@
-# warriors
+# Object Oriented Warrior Battle!
+ 
+import random
+import math
+ 
+# Warriors will have names, health, and attack and block maximums
+# They will have the capabilities to attack and block random amounts
 
-# ---------- GETTERS & SETTERS ----------
-# Getters and Setters are used to protect our objects
-# from assigning bad fields or for providing improved
-# output
+# create class warrior, set defaults
+class Warrior:
+    def __init__(self, name="warrior", health=0, attkMax=0, blockMax=0):
+        self.name = name
+        self.health = health
+        self.attkMax = attkMax
+        self.blockMax = blockMax
  
-class Square:
-    def __init__(self, height="0", width="0"):
-        self.height = height
-        self.width = width
+ # how to calculate attacks
+    def attack(self):
+        # Randomly calculate the attack amount
+        # random() returns a value from 0.0 to 1.0
+        attkAmt = self.attkMax * (random.random() + .5)
  
-    # This is the getter
-    @property
-    def height(self):
-        print("Retrieving the height")
+        return attkAmt
+
+ # how to calculate blocks
+    def block(self):
  
-        # Put a __ before this private field
-        return self.__height
+        # Randomly calculate how much of the attack was blocked
+        blockAmt = self.blockMax * (random.random() + .5)
  
-    # This is the setter
-    @height.setter
-    def height(self, value):
+        return blockAmt
  
-        # We protect the height from receiving a bad value
-        if value.isdigit():
+# The Battle class will have the capability to loop until 1 Warrior dies
+# The Warriors will each get a turn to attack each turn
  
-            # Put a __ before this private field
-            self.__height = value
+# battle object
+class Battle:
+ 
+    def startFight(self, warrior1, warrior2):
+ 
+        # Continue looping until a Warrior dies switching back and
+        # forth as the Warriors attack each other
+        while True:
+            if self.getAttackResult(warrior1, warrior2) == "Game Over":
+                print("Game Over")
+                break
+ 
+            if self.getAttackResult(warrior2, warrior1) == "Game Over":
+                print("Game Over")
+                break
+ 
+    # A function will receive each Warrior that will attack the other
+    # Have the attack and block amounts be integers to make the results clean
+    # Output the results of the fight as it goes
+    # If a Warrior dies return that result to end the looping in the
+    # above function
+ 
+    # Make this method static because we don't need to use self
+    @staticmethod
+    def getAttackResult(warriorA, warriorB):
+        warriorAAttkAmt = warriorA.attack()
+ 
+        warriorBBlockAmt = warriorB.block()
+ 
+        damage2WarriorB = math.ceil(warriorAAttkAmt - warriorBBlockAmt)
+ 
+        warriorB.health = warriorB.health - damage2WarriorB
+ 
+        print("{} attacks {} and deals {} damage".format(warriorA.name,
+                                                         warriorB.name, damage2WarriorB))
+ 
+        print("{} is down to {} health".format(warriorB.name,
+                                               warriorB.health))
+ 
+        if warriorB.health <= 0:
+            print("{} has Died and {} is Victorious".format(warriorB.name,
+                                                            warriorA.name))
+ 
+            return "Game Over"
         else:
-            print("Please only enter numbers for height")
+            return "Fight Again"
  
-    # This is the getter
-    @property
-    def width(self):
-        print("Retrieving the width")
-        return self.__width
- 
-    # This is the setter
-    @width.setter
-    def width(self, value):
-        if value.isdigit():
-            self.__width = value
-        else:
-            print("Please only enter numbers for width")
- 
-    def getArea(self):
-        return int(self.__width) * int(self.__height)
- 
- 
+ # the arena!
 def main():
-    aSquare = Square()
  
-    height = input("Enter height : ")
-    width = input("Enter width : ")
+    # Create 2 Warriors
+    Odyssus = Warrior("Odyssus", 50, 20, 10)
+    Titan = Warrior("Titan", 50, 20, 10)
  
-    aSquare.height = height
-    aSquare.width = width
+    # Create Battle object
+    battle = Battle()
  
-    print("Height :", aSquare.height)
-    print("Width :", aSquare.width)
- 
-    print("The Area is :", aSquare.getArea())
- 
+    # Initiate Battle
+    battle.startFight(Odyssus, Titan)
  
 main()

@@ -19,3 +19,5 @@ print(t[0])
 print(t[5:])
 
 # remember can't be modified in place
+
+# tuples are very boring actually
