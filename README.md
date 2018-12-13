@@ -1,8 +1,8 @@
-#Learn Python
+# Learn Python
 
 This repository is dedicated to working through the exercises associated with two introductory resources, 'Think Python' and 'Learn Python the Hard Way'. For more information on these books, check out the resource review section of my blog – 
 
-[www.fisherankney.com](www.fisherankney.com)
+[www.fisherankney.com](http://fisherankney.com/)
 
 <br> 
 
